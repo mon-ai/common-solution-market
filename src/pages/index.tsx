@@ -52,7 +52,7 @@ export default function IndexPage() {
   return (
     <>
       <Layout>
-        <ThemeHeader c1={c1} c1_bg={c1_bg} />
+        <ThemeHeader />
         <Header
           className={styles.ant_header}
           style={{
@@ -84,7 +84,12 @@ export default function IndexPage() {
           <Space
             direction="vertical"
             size={16}
-            style={{ padding: scroll && scroll.top > 5.25 * default_px ? '6.5em 2em 2em 2em': '2em 2em 2em 2em' }}
+            style={{
+              padding:
+                scroll && scroll.top > 5.25 * default_px
+                  ? '6.5em 2em 2em 2em'
+                  : '2em 2em 2em 2em',
+            }}
           >
             {proposals.length > 0 ? (
               proposals.map((proposal) => {
