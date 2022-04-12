@@ -2,6 +2,7 @@ import styles from './proposal.less';
 import { Button, Card, Space, Divider } from 'antd';
 
 import { Issues } from './governance/issues';
+import { Simulations } from './simulation/simulations';
 
 import { useState } from 'react';
 
@@ -38,7 +39,6 @@ export interface ISimulation {
   description: string;
 }
 
-
 const tabList = [
   { key: 'general', tab: 'General' },
   { key: 'governance', tab: 'Governance' },
@@ -52,11 +52,7 @@ function Content(props: any) {
     );
   } else if (props.tab === 'simulation') {
     return (
-      <div>
-        <h2>Simulations</h2>
-        <p>{props.simulations ? props.simulations.toString() : ''}</p>
-        <Button type="primary">Submit New Simulation</Button>
-      </div>
+     <Simulations simulations={props.simulations} /> 
     );
   }
   return (
@@ -90,10 +86,12 @@ export function Proposal(props: IProposal) {
           </p>
         }
       >
-        <Content tab={activeTab} 
+        <Content
+          tab={activeTab}
           description={props.description}
           issues={props.issues}
-          simulations={props.simulations} />
+          simulations={props.simulations}
+        />
       </Card>
     </div>
   );

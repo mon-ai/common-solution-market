@@ -1,12 +1,16 @@
 import styles from './merger.less';
-import { Card } from 'antd';
+import { Card, Space, Button } from 'antd';
 
 import { IMerger } from '../proposal';
 
 export function Merger(props: IMerger) {
   return (
-    <Card type="inner" title={props.title}>
+    <Card type="inner" title={props.title} extra={<a>View full proposal</a>}>
       <p>{props.description}</p>
+      <Space size={8}>
+        <Button>Vote Merge</Button>
+        <Button>Vote Don't Merge</Button>
+      </Space>
     </Card>
   );
 }

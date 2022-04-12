@@ -13,7 +13,7 @@ export function Issues(props: IIssues) {
           {props.mergers
             ? props.mergers.map((merger: IMerger) => <Merger id={merger.id} title={merger.title} description={merger.description}/>)
             : ''}
-      <Button type="primary" style={{marginTop: 8}}>Propose New Merger</Button>
+      <Button type="primary" style={{marginTop: 8}}>Suggest New Merger</Button>
       </Space>
       <Divider />
       <h2>Criterion Changes</h2>
@@ -21,8 +21,8 @@ export function Issues(props: IIssues) {
           {props.changes
             ? props.changes.map((change: IChange) => <Change id={change.id} title={change.title} description={change.description}/>)
             : ''}
-      <Button type="primary" style={{marginTop: 8}}>Propose New Change</Button>
       </Space>
+      <Button type="primary" style={{marginTop: 16}}>Suggest New Change</Button>
     </div>
   );
 }
