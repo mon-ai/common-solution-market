@@ -1,4 +1,4 @@
-import styles from './theme_header.less';
+import styles from './theme-header.less';
 
 export function ThemeHeader() {
   return (
