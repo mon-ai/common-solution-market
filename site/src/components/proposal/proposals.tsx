@@ -1,5 +1,7 @@
+import styles from './proposals.less';
+
 import { Spin, Space, Result } from 'antd';
-import { Proposal, IProposal } from '../components/proposal';
+import { Proposal, IProposal } from './proposal';
 
 import axios from 'axios';
 
@@ -23,7 +25,7 @@ export function Proposals() {
     return <Spin size="large" />;
   }
   return (
-    <Space size={16} direction="vertical">
+    <Space size={32} direction="vertical">
       {data && data.length > 0 ? (
         data.map((data, i) => {
           return (
@@ -34,6 +36,8 @@ export function Proposals() {
               description={data.description}
               funding={data.funding}
               funders={data.funders}
+              issues={data.issues}
+              simulations={data.simulations}
             />
           );
         })

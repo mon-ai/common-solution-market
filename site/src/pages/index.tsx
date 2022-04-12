@@ -7,7 +7,7 @@ import { ConfigProvider, Space, Layout, Menu, Input, Button, Spin } from 'antd';
 
 import { ThemeHeader } from '../components/theme-header';
 import { CustomButton } from '../components/connect-button';
-import { Proposals } from '../components/proposals';
+import { Proposals } from '../components/proposal/proposals';
 
 import {
   RainbowKitProvider,
