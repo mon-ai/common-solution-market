@@ -10,8 +10,8 @@ export function Simulation(props: ISimulation) {
       <p>{props.description}</p>
       <Space size={8}>
         <Button type="primary">Playtest</Button>
-        <Button>Vote Accept</Button>
-        <Button>Vote Reject</Button>
+        <Button>Accept</Button>
+        <Button>Reject</Button>
       </Space>
     </Card>
   );

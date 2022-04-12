@@ -1,5 +1,5 @@
 import styles from './issues.less';
-import { Button, Divider, Space } from 'antd';
+import { Button, Divider, Space, Alert } from 'antd';
 
 import { IIssues, IMerger, IChange } from '../proposal';
 import { Change } from './change';
@@ -9,20 +9,40 @@ export function Issues(props: IIssues) {
   return (
     <div>
       <h2>Mergers</h2>
-      <Space size={8} align='start' wrap={true}>
-          {props.mergers
-            ? props.mergers.map((merger: IMerger) => <Merger id={merger.id} title={merger.title} description={merger.description}/>)
-            : ''}
-      <Button type="primary" style={{marginTop: 8}}>Suggest New Merger</Button>
+      <Space size={16} direction="vertical">
+        <Space size={8} align="start" wrap={true}>
+          {props.mergers.length > 0 ? (
+            props.mergers.map((merger: IMerger) => (
+              <Merger
+                id={merger.id}
+                title={merger.title}
+                description={merger.description}
+              />
+            ))
+          ) : (
+            <Alert message="No change suggestions" type="error" />
+          )}
+        </Space>
+        <Button type="primary">Suggest New Merger</Button>
       </Space>
       <Divider />
       <h2>Criterion Changes</h2>
-      <Space size={8} align='start' wrap={true}>
-          {props.changes
-            ? props.changes.map((change: IChange) => <Change id={change.id} title={change.title} description={change.description}/>)
-            : ''}
+      <Space size={16} direction="vertical">
+        <Space size={8} align="start" wrap={true}>
+          {props.changes.length > 0 ? (
+            props.changes.map((change: IChange) => (
+              <Change
+                id={change.id}
+                title={change.title}
+                description={change.description}
+              />
+            ))
+          ) : (
+            <Alert message="No change suggestions" type="error" />
+          )}
+        </Space>
+        <Button type="primary">Suggest New Change</Button>
       </Space>
-      <Button type="primary" style={{marginTop: 16}}>Suggest New Change</Button>
     </div>
   );
 }

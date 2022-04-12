@@ -8,8 +8,8 @@ export function Merger(props: IMerger) {
     <Card type="inner" title={props.title} extra={<a>View full proposal</a>}>
       <p>{props.description}</p>
       <Space size={8}>
-        <Button>Vote Merge</Button>
-        <Button>Vote Don't Merge</Button>
+        <Button>Merge</Button>
+        <Button>Don't Merge</Button>
       </Space>
     </Card>
   );

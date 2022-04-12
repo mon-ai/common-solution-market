@@ -3,7 +3,7 @@ import '@rainbow-me/rainbowkit/dist/index.css';
 
 import styles from './index.less';
 import { presetPalettes } from '@ant-design/colors';
-import { ConfigProvider, Space, Layout, Menu, Input, Button, Spin } from 'antd';
+import { ConfigProvider, Space, Layout, Menu, Input, Button, Spin, Alert } from 'antd';
 
 import { ThemeHeader } from '../components/theme-header';
 import { CustomButton } from '../components/connect-button';
@@ -117,6 +117,7 @@ export default function IndexPage() {
             >
               <CustomButton />
               <Proposals />
+              <Alert message="No more proposals" type="error" style={{marginTop: 16}}/>
             </Space>
           </Content>
         </Layout>
