@@ -1,6 +1,8 @@
 import 'antd/dist/antd.variable.min.css';
 import '@rainbow-me/rainbowkit/dist/index.css';
 
+import {UmiUIFlag } from 'umi';
+
 import styles from './index.less';
 import { presetPalettes } from '@ant-design/colors';
 import { ConfigProvider, Space, Layout, Menu, Input, Button, Spin, Alert } from 'antd';
@@ -116,6 +118,7 @@ export default function IndexPage() {
               }}
             >
               <CustomButton />
+              <UmiUIFlag />
               <Proposals />
               <Alert message="No more proposals" type="error" style={{marginTop: 16}}/>
             </Space>
