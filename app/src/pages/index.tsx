@@ -3,7 +3,7 @@ import {
   Chain,
   connectorsForWallets,
   getDefaultWallets,
-  RainbowKitProvider
+  RainbowKitProvider,
 } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import { useScroll } from "ahooks";
@@ -14,7 +14,7 @@ import {
   Input,
   Layout,
   Menu,
-  Space
+  Space,
 } from "antd";
 import "antd/dist/antd.variable.min.css";
 import { providers } from "ethers";
@@ -22,8 +22,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 import { chain, WagmiProvider } from "wagmi";
+import Banner from "../common/components/Banner";
 import CustomButton from "../common/components/connectButton";
-import CommonHeader from "../common/components/header";
 import Proposals from "../modules/proposal/proposals";
 
 const { Header, Content, Footer } = Layout;
@@ -60,33 +60,22 @@ function getColor() {
 }
 
 const Home: NextPage = () => {
-  const app = useRef(null);
   const [color] = useState(getColor());
   const [defaultPx, setDefaultPx] = useState(16);
 
-  const c1 = { color };
-  const c1_bg = { backgroundColor: color };
-
-  ConfigProvider.config({
-    theme: {
-      primaryColor: color,
-    },
-  });
-
-  const scroll = useScroll(app);
-
   useEffect(() => {
+    ConfigProvider.config({
+      theme: {
+        primaryColor: color,
+      },
+    });
     setDefaultPx(
-      parseFloat(
-        window.getComputedStyle(
-          app.current ? app.current : document.documentElement
-        ).fontSize
-      )
+      parseFloat(window.getComputedStyle(document.documentElement).fontSize)
     );
   }, []);
 
   return (
-    <div ref={app}>
+    <div>
       <Head>
         <title>Common Solution Market</title>
         <meta name="description" content="CommonAI common solution market" />
@@ -95,14 +84,8 @@ const Home: NextPage = () => {
       <RainbowKitProvider chains={chains}>
         <WagmiProvider autoConnect connectors={connectors} provider={provider}>
           <Layout>
-            <CommonHeader />
-            <Header
-              className="z-10 w-screen flex items-center shadow-black"
-              style={{
-                position:
-                  scroll && scroll.top > 5 * defaultPx ? "fixed" : "relative",
-              }}
-            >
+            <Banner />
+            <Header className="z-10 sticky top-0 w-screen flex items-center shadow-black">
               <div className="w-full">
                 <Menu
                   className="w-full"
@@ -124,17 +107,8 @@ const Home: NextPage = () => {
               </Button>
             </Header>
             <Content>
-              <Space
-                direction="vertical"
-                size="middle"
-                style={{
-                  padding:
-                    scroll && scroll.top > 5 * defaultPx
-                      ? "calc(64 + 2rem) 2rem 2rem 2rem"
-                      : "2rem 2rem 2rem 2rem",
-                }}
-              >
-                <CustomButton /> 
+              <Space direction="vertical" className="p-8" size="middle">
+                <CustomButton />
                 <Proposals />
                 <Alert
                   className="mt-4"
