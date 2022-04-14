@@ -6,7 +6,6 @@ import {
   RainbowKitProvider,
 } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
-import { useScroll } from "ahooks";
 import {
   Alert,
   Button,
@@ -22,7 +21,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 import { chain, WagmiProvider } from "wagmi";
-import Banner from "../common/components/Banner";
+import Banner from "../common/components/banner";
 import CustomButton from "../common/components/connectButton";
 import Proposals from "../modules/proposal/proposals";
 
@@ -72,7 +71,7 @@ const Home: NextPage = () => {
     setDefaultPx(
       parseFloat(window.getComputedStyle(document.documentElement).fontSize)
     );
-  }, []);
+  }, [color]);
 
   return (
     <div>
