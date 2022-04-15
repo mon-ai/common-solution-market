@@ -21,7 +21,7 @@ export default function Issues(props: IIssues) {
             <Alert message="No change suggestions" type="error" />
           )}
         </Space>
-        <Button type="primary">Suggest New Merger</Button>
+        <Button type="primary" className="shadow-ant-dark">Suggest New Merger</Button>
       </Space>
       <Divider />
       <h2>Criterion Changes</h2>
@@ -39,7 +39,7 @@ export default function Issues(props: IIssues) {
             <Alert message="No change suggestions" type="error" />
           )}
         </Space>
-        <Button type="primary">Suggest New Change</Button>
+        <Button type="primary" className="shadow-ant-dark">Suggest New Change</Button>
       </Space>
     </div>
   );

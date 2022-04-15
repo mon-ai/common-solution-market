@@ -22,7 +22,7 @@ function Content(props: any) {
     <div>
       <h2>Description</h2>
       <p>{props.description}</p>
-      <Button type="primary">Fund This Proposal</Button>
+      <Button type="primary" className="shadow-ant-dark">Fund This Proposal</Button>
     </div>
   );
 }

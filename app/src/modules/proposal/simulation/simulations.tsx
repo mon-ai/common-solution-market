@@ -20,7 +20,7 @@ export default function Simulations(props: ISimulations) {
             <Alert message="No submitted simulations" type="error" />
           )}
         </Space>
-        <Button type="primary">Submit New Simulation</Button>
+        <Button type="primary" className="shadow-ant-dark">Submit New Simulation</Button>
       </Space>
     </div>
   );
