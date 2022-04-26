@@ -1,13 +1,12 @@
 import { useRequest } from "ahooks";
-import { Result, Space, Spin } from "antd";
+import { Alert, Result, Space, Spin } from "antd";
 import axios from "axios";
 import { IProposal } from "../../common/types/proposals";
 import { Proposal } from "./proposal";
 
 const fetchProposals = async () => {
   const res = axios.get("/api/mock/proposals", { timeout: 5000 });
-  const proposals = (await res).data.proposals;
-  return await proposals;
+  return (await res).data.proposals;
 };
 
 export default function Proposals() {
@@ -39,7 +38,10 @@ export default function Proposals() {
           );
         })
       ) : (
-        <Spin size="large" />
+        <Alert message="No proposals found" type="error" />
+      )}
+      {data && (
+        <Alert className="mt-4" message="No more proposals" type="error" />
       )}
     </Space>
   );

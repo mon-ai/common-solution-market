@@ -7,7 +7,7 @@ export default function Merger(props: IMerger) {
       <p>{props.description}</p>
       <Space size={8}>
         <Button>Merge</Button>
-        <Button>Don't Merge</Button>
+        <Button>Don&apos;t Merge</Button>
       </Space>
     </Card>
   );

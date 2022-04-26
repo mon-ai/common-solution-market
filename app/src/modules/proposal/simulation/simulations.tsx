@@ -11,6 +11,7 @@ export default function Simulations(props: ISimulations) {
           {props.simulations.length > 0 ? (
             props.simulations.map((change: ISimulation) => (
               <Simulation
+                key={`simulation_${change.id}`}
                 id={change.id}
                 title={change.title}
                 description={change.description}

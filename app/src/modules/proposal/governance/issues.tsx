@@ -12,6 +12,7 @@ export default function Issues(props: IIssues) {
           {props.mergers.length > 0 ? (
             props.mergers.map((merger: IMerger) => (
               <Merger
+                key={`merger_${merger.id}`}
                 id={merger.id}
                 title={merger.title}
                 description={merger.description}
@@ -30,6 +31,7 @@ export default function Issues(props: IIssues) {
           {props.changes.length > 0 ? (
             props.changes.map((change: IChange) => (
               <Change
+                key={`change_${change.id}`}
                 id={change.id}
                 title={change.title}
                 description={change.description}
