@@ -20,7 +20,7 @@ function Index() {
     var __PS_MV_REG;
     const { color } = useLoaderData();
     const navigate = useNavigate();
-    useEffect(function () {
+    useEffect(() => {
         ConfigProvider.config({ 'theme' : { 'primaryColor' : color } });
         navigate('./proposals');
         __PS_MV_REG = [];

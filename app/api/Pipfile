@@ -8,9 +8,12 @@ fastapi = "*"
 uvicorn = "*"
 hy="*"
 supertokens-python = "*"
+setuptools = "*"
+python-dotenv = "*"
 
 [dev-packages]
 autopep8 = "*"
+faker = "*"
 
 [requires]
 python_version = "3.9"

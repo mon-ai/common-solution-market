@@ -5,7 +5,7 @@ import { IProposal } from "../../common/types/proposals";
 import { Proposal } from "./proposal";
 
 const fetchProposals = async () => {
-  const res = axios.get("/api/mock/proposals", { timeout: 5000 });
+  const res = axios.get("http://127.0.0.1:8000/api/mock/proposals", { timeout: 5000 });
   return (await res).data.proposals;
 };
 

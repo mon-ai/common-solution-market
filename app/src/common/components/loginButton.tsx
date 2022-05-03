@@ -1,15 +1,19 @@
 import { Button } from "antd";
-import Link from "next/link";
-import useAuth from "../hooks/useAuth";
+import { redirectToAuth } from "supertokens-auth-react/recipe/thirdpartyemailpassword";
 
-export default function LoginButton() {
-  const { isLoggedIn, logOut } = useAuth();
+interface Props {
+  isLoggedIn: boolean;
+  logOut: () => void;
+}
 
-  return isLoggedIn ? (
-    <Button onClick={logOut}>Logout</Button>
+async function login() {
+  redirectToAuth();
+}
+
+export default function LoginButton(props: Props) {
+  return props.isLoggedIn ? (
+    <Button onClick={props.logOut}>Logout</Button>
   ) : (
-    <Link href="/auth" passHref>
-      <Button>Login</Button>
-    </Link>
+    <Button onClick={login}>Login</Button>
   );
 }
