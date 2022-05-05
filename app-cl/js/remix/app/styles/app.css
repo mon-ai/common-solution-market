@@ -481,6 +481,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: 10 !important;
 }
 
+.m-3 {
+  margin: 0.75rem !important;
+}
+
+.ml-2 {
+  margin-left: 0.5rem !important;
+}
+
 .flex {
   display: flex !important;
 }
@@ -505,8 +513,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100% !important;
 }
 
+.w-fit {
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+}
+
 .w-1\/2 {
   width: 50% !important;
+}
+
+.min-w-fit {
+  min-width: -webkit-fit-content !important;
+  min-width: -moz-fit-content !important;
+  min-width: fit-content !important;
 }
 
 .flex-row {
@@ -515,6 +535,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .flex-wrap {
   flex-wrap: wrap !important;
+}
+
+.items-end {
+  align-items: flex-end !important;
 }
 
 .items-center {

@@ -1,5 +1,5 @@
 import { Outlet } from '@remix-run/react';
-function ListProposals() {
+function Proposals() {
     return <Outlet></Outlet>;
 };
-export default ListProposals;
+export default Proposals;
