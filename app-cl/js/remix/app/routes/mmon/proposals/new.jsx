@@ -8,6 +8,7 @@ const { Content } = Layout;
 const { Step } = Steps;
 import { json } from '@remix-run/node';
 async function loader() {
+    return null;
 };
 function pageLink(step) {
     switch (step) {
@@ -76,10 +77,11 @@ function NewProposal() {
         })());
     }, [step, name, description, funding]);
     __PS_MV_REG = [];
-    return <Layout><Header variant="proposals/new" buttonLink={pageLink(step + 1)} buttonText={buttonText(step + 1, funding)} buttonDisabled={nextDisabled}></Header><Content className="p-6"><Space className="w-full" direction="vertical"><PageHeader className="shadow-ant-light" ghost={false} onBack={() => {
+    return <Layout><Header variant="proposals/new" buttonLink={pageLink(step)} buttonMethod="post" buttonText={buttonText(step + 1, funding)} buttonDisabled={nextDisabled}></Header><Content className="p-6"><Space className="w-full" direction="vertical"><PageHeader className="shadow-ant-light" ghost={false} onBack={() => {
     navigate(-1);
     __PS_MV_REG = [];
     return null;
-}} title="New Proposal" extra={[<Link to="/mmon/proposals/new/propose"><Button key="3" type="link" onClick={restart}>Restart</Button></Link>, <Link to={pageLink(step - 1)}><Button key="2" type="default" disabled={step === 0}>{buttonText(step - 1, funding)}</Button></Link>, <Link to={pageLink(step + 1)}><Button key="1" type="primary" disabled={nextDisabled}>{buttonText(step + 1, funding)}</Button></Link>]}><Steps current={step}><Step title="Propose" description="problem to solve"></Step><Step title="Elaborate" description="context and criteria"></Step><Step title="Fund" description="your new proposal"></Step></Steps></PageHeader><Outlet context={{ name, setName, description, setDescription, funding, setFunding, nextDisabled }}></Outlet></Space></Content></Layout>;
+}} title="New Proposal" extra={[<Link to="/mmon/proposals/new/propose" key="3"><Button key="3" type="link" onClick={restart}>Restart</Button></Link>, <Link to={pageLink(step - 1)} key="2"><Button key="2" type="default" disabled={step === 0}>{buttonText(step - 1, funding)}</Button></Link>, <Form method="post" action={pageLink(step)} key="1"><Button key="1" type="primary" htmlType="submit" disabled={nextDisabled}>{buttonText(step + 1, funding)}</Button></Form>]}><Steps current={step}><Step title="Propose" description="problem to solve"></Step><Step title="Elaborate" description="context and criteria"></Step><Step title="Fund" description="your new proposal"></Step></Steps></PageHeader><Outlet context={{ name, setName, description, setDescription, funding, setFunding, nextDisabled }}></Outlet></Space></Content></Layout>;
 };
 export default NewProposal;
+export { loader };

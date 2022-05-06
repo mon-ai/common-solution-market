@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useLoaderData, Outlet } from '@remix-run/react';
 import { ConfigProvider } from 'antd';
 import { json } from '@remix-run/node';
 import { presetPalettes } from '@ant-design/colors';
-export function Banner() {
+function Banner() {
     return <div className="flex flex-row flex-no-wrap w-screen h-20"><div className="bg-white w-1/2 flex flex-row flex-wrap justify-between px-4"><a href="https://mmonai.co/" target="_blank" rel="noreferrer"><h1 className="font-title text-3xl"><span className="text-ant">.co</span><br/>&nbsp;&nbsp;&nbsp;mmonAI</h1></a><h1 className="font-title text-3xl">.common</h1></div><div className="bg-ant w-1/2 px-4"><h1 className="font-title text-3xl">solution market<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em className="text-white">proposals</em></h1></div></div>;
 };
 async function loader() {
@@ -19,11 +18,8 @@ async function loader() {
 function Index() {
     var __PS_MV_REG;
     const { color } = useLoaderData();
-    const navigate = useNavigate();
     useEffect(() => {
         ConfigProvider.config({ 'theme' : { 'primaryColor' : color } });
-        navigate('./proposals');
-        __PS_MV_REG = [];
         return undefined;
     }, []);
     __PS_MV_REG = [];

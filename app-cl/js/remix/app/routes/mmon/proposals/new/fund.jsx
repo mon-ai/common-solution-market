@@ -4,26 +4,26 @@ import { useLoaderData, useOutletContext, Form, Link } from '@remix-run/react';
 import { ClientOnly } from 'remix-utils';
 import { Button, Card, Divider, InputNumber, Space } from 'antd';
 import { redirect } from '@remix-run/node';
-import stripe from '~/services/stripe.server';
+import { stripe, redis } from '~/services/clients.server';
 async function action(req) {
     var __PS_MV_REG;
     const body = await (req.request.formData());
     const session = await (stripe.checkout.sessions.create({ 'line_items' : [{ 'price_data' : { 'currency' : 'usd',
                                                                                                 'unit_amount' : 100 * body.get('amount'),
-                                                                                                'product_data' : { 'name' : 'Initial Funding' }
+                                                                                                'product_data' : { 'name' : 'Initial Funding', 'description' : body.get('description') }
                                                                                               }, 'quantity' : 1 }],
                                                              'mode' : 'payment',
                                                              'success_url' : 'http://localhost:3000/mmon/proposals/list',
-                                                             'cancel_url' : 'http://localhost:3000/mmon/proposals/new/fund'
+                                                             'cancel_url' : 'http://localhost:3000/mmon/proposals/new'
                                                            }));
     __PS_MV_REG = [];
     return redirect(session.url);
 };
-function FundForm() {
+function FundForm(props) {
     var __PS_MV_REG;
-    const { funding, setFunding, nextDisabled } = useOutletContext();
+    const { name, funding, setFunding, nextDisabled } = useOutletContext();
     __PS_MV_REG = [];
-    return <Card className="w-full h-auto min-h-[50vh] shadow-ant-light"><Form method="post"><Space direction="vertical"><Space><Button onClick={() => {
+    return <Card className="w-full h-auto min-h-[50vh] shadow-ant-light"><Form method="post"><input type="hidden" name="description" value={name}/><Space direction="vertical"><Space><Button onClick={() => {
     setFunding(10);
     __PS_MV_REG = [];
     return null;

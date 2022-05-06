@@ -493,6 +493,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: flex !important;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .h-20 {
   height: 5rem !important;
 }
