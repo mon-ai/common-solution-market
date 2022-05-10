@@ -216,12 +216,19 @@
          (case options
            (:l '(esm-export (dobj loader)))
            (:a '(esm-export (dobj action)))
-           (:la '(dobj loader action))))))
+           (:la '(esm-export (dobj loader action)))))))
      
 (defpsmacro defaction (&rest body)
   `(async-defun action (req)
                 (ps-compat)
-                (defconstant body (await (chain req request (form-data))))
+                (defconstant request (@ req request))
+                (defconstant body (await (chain request (form-data))))
+                ,@body))
+
+(defpsmacro defloader (&rest body)
+  `(async-defun loader (req)
+                (ps-compat)
+                (defconstant request (@ req request))
                 ,@body))
 
 ;; utils

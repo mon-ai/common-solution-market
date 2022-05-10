@@ -15,7 +15,6 @@
     ;; imports
     ; browser
     (import-many ((dobj use-effect) "react")
-                 ((dobj use-navigate) "react-router-dom")
                  ((dobj use-loader-data *outlet) "@remix-run/react")
                  ((dobj *config-provider) "antd"))
     ; server
@@ -48,11 +47,9 @@
     (defun *index ()
       (var *__PS_MV_REG*) ; ps compat
       (defconstant (dobj color) (use-loader-data))
-      (defconstant navigate (use-navigate))
       (use-effect (=> () 
                     (chain *config-provider 
                            (config (create 'theme (create 'primary-color color))))
-                    (navigate "./proposals")
                     undefined) [])
       (psx (:div (:*banner ) :*outlet)))
     (export-remix *index :l)))
